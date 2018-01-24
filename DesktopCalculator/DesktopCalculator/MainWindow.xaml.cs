@@ -27,9 +27,12 @@ namespace DesktopCalculator
 
         private void executeButton_Click(object sender, RoutedEventArgs e)
         {
-            int inputNumber = int.Parse(num1.Text);
-            int squareNumber = inputNumber * inputNumber;
-            result.Content = squareNumber; 
+
+        }
+
+        private void num1btn_Click(object sender, RoutedEventArgs e)
+        {
+            resultBox.Text = resultBox.Text + ((Button)sender).Content;
         }
     }
 }
