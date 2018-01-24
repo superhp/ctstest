@@ -30,7 +30,8 @@ namespace TicTacToe
 
         }
 
-
+        private bool _player = false; // false - x, true - 0
+        
 
         private void buttonClicked(object sender, RoutedEventArgs e)
         {
@@ -38,6 +39,9 @@ namespace TicTacToe
             int x = int.Parse(coordinates[0].ToString());
             int y = int.Parse(coordinates[1].ToString());
 
+            _player = !_player;
+
+            ((Button)sender).Content = _player ? "0" : "X"; 
         }
     }
 }
