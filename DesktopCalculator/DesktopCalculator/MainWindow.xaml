@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="332.38" Width="360.011">
     <Grid Margin="0,0,2,3">
-        <Button x:Name="executeBtn" Content="=" HorizontalAlignment="Left" Margin="108,99,0,0" VerticalAlignment="Top" Width="32" Click="executeButton_Click" RenderTransformOrigin="0.919,1.232"/>
+        <Button x:Name="executeBtn" Content="=" HorizontalAlignment="Left" Margin="108,99,0,0" VerticalAlignment="Top" Width="32" RenderTransformOrigin="0.919,1.232" Click="executeBtn_Click"/>
         <TextBox x:Name="resultBox" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="327" IsEnabled="False"/>
         <Button x:Name="num1btn" Content="1" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="25" Click="num1btn_Click"/>
         <Button x:Name="num2btn" Content="2" HorizontalAlignment="Left" Margin="40,45,0,0" VerticalAlignment="Top" Width="25" Click="num1btn_Click"/>
@@ -19,7 +19,7 @@
         <Button x:Name="num8btn" Content="8" HorizontalAlignment="Left" Margin="40,99,0,0" VerticalAlignment="Top" Width="25" Click="num1btn_Click"/>
         <Button x:Name="num9btn" Content="9" HorizontalAlignment="Left" Margin="70,99,0,0" VerticalAlignment="Top" Width="25" Click="num1btn_Click"/>
         <Button x:Name="plusbtn" Content="+" HorizontalAlignment="Left" Margin="108,45,0,0" VerticalAlignment="Top" Width="32" RenderTransformOrigin="0.919,1.232" Click="plusbtn_Click"/>
-        <Button x:Name="minusBtn" Content="-" HorizontalAlignment="Left" Margin="108,72,0,0" VerticalAlignment="Top" Width="32" RenderTransformOrigin="0.919,1.232"/>
+        <Button x:Name="minusBtn" Content="-" HorizontalAlignment="Left" Margin="108,72,0,0" VerticalAlignment="Top" Width="32" RenderTransformOrigin="0.919,1.232" Click="minusBtn_Click"/>
 
     </Grid>
 </Window>

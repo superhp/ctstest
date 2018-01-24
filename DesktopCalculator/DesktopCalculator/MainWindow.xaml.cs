@@ -31,7 +31,7 @@ namespace DesktopCalculator
 
         private void executeButton_Click(object sender, RoutedEventArgs e)
         {
-            
+               
         }
 
         private void num1btn_Click(object sender, RoutedEventArgs e)
@@ -47,6 +47,19 @@ namespace DesktopCalculator
             part2 = part1;
             part1 = "";
             action = "+";
+        }
+
+        private void minusBtn_Click(object sender, RoutedEventArgs e)
+        {
+            resultBox.Text = resultBox.Text + "-";
+            part2 = part1;
+            part1 = "";
+            action = "-";
+        }
+
+        private void executeBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
