@@ -21,6 +21,8 @@ namespace DesktopCalculator
     public partial class MainWindow : Window
     {
         private string part1 = "";
+        private string part2 = "";
+        private string action; 
 
         public MainWindow()
         {
@@ -29,7 +31,7 @@ namespace DesktopCalculator
 
         private void executeButton_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void num1btn_Click(object sender, RoutedEventArgs e)
@@ -37,6 +39,14 @@ namespace DesktopCalculator
             string buttonValue = ((Button)sender).Content.ToString();
             resultBox.Text = resultBox.Text + buttonValue;
             part1 = part1 + buttonValue;
+        }
+
+        private void plusbtn_Click(object sender, RoutedEventArgs e)
+        {
+            resultBox.Text = resultBox.Text + "+";
+            part2 = part1;
+            part1 = "";
+            action = "+";
         }
     }
 }
