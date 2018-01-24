@@ -27,12 +27,15 @@ namespace TicTacToe
             int x = int.Parse(coordinates[0].ToString()) - 1;
             int y = int.Parse(coordinates[1].ToString()) - 1;
 
-            _matrix[x, y] = (int)_player; 
+            if (_matrix[x, y] == 0)
+            {
+                _matrix[x, y] = (int)_player;
 
-            ((Button)sender).Content = _player == Player.O ? "0" : "X";
-            ((Button)sender).Foreground = _player == Player.O ? Brushes.Blue : Brushes.Red;
+                ((Button)sender).Content = _player == Player.O ? "0" : "X";
+                ((Button)sender).Foreground = _player == Player.O ? Brushes.Blue : Brushes.Red;
 
-            _player = _player == Player.O ? Player.X : Player.O;            
+                _player = _player == Player.O ? Player.X : Player.O;
+            }
         }
     }
 }
