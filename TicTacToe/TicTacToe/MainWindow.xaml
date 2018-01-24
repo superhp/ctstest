@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TicTacToe"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="328.431" Width="306.863">
     <Grid>
-        
+        <Button Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="90" Height="90" Tag="11" Click="buttonClicked"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="105,10,0,0" VerticalAlignment="Top" Width="90" Height="90" Tag="12" Click="buttonClicked"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top" Width="90" Height="90" Click="buttonClicked" Tag="13"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" Width="90" Height="90" Click="buttonClicked" Tag="21"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="105,105,0,0" VerticalAlignment="Top" Width="90" Height="90" Click="buttonClicked" Tag="22"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="200,105,0,0" VerticalAlignment="Top" Width="90" Height="90" Click="buttonClicked" Tag="23"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" Width="90" Height="90" Click="buttonClicked" Tag="31"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="105,200,0,0" VerticalAlignment="Top" Width="90" Height="90" Click="buttonClicked" Tag="32"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="200,200,0,0" VerticalAlignment="Top" Width="90" Height="90" Click="buttonClicked" Tag="33"/>
+
     </Grid>
 </Window>
