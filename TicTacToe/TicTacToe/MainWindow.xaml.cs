@@ -41,7 +41,8 @@ namespace TicTacToe
 
             _player = !_player;
 
-            ((Button)sender).Content = _player ? "0" : "X"; 
+            ((Button)sender).Content = _player ? "0" : "X";
+            ((Button)sender).Foreground = _player ? Brushes.Blue : Brushes.Red; 
         }
     }
 }
