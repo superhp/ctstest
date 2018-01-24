@@ -21,6 +21,11 @@ namespace TicTacToe
             { 0, 0, 0 }
         };
 
+        private Player? DetermineWinner()
+        {
+            return null;
+        }
+
         private void buttonClicked(object sender, RoutedEventArgs e)
         {
             string coordinates = ((Button)sender).Tag.ToString();
@@ -30,6 +35,12 @@ namespace TicTacToe
             if (_matrix[x, y] == 0)
             {
                 _matrix[x, y] = (int)_player;
+
+                Player? winner = DetermineWinner();
+                if (winner != null)
+                {
+                    winnerLabel.Content = winner == Player.X ? "X" : "O" + " has won!"; 
+                }
 
                 ((Button)sender).Content = _player == Player.O ? "0" : "X";
                 ((Button)sender).Foreground = _player == Player.O ? Brushes.Blue : Brushes.Red;
