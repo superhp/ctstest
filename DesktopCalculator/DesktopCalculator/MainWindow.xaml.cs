@@ -55,7 +55,14 @@ namespace DesktopCalculator
             int part2num = int.Parse(part2);
 
             Arithmetics arithmetics = new Arithmetics();
-            resultBox.Text = arithmetics.Calculate(part2num, part1num, action).ToString(); 
+            try
+            {
+                resultBox.Text = arithmetics.Calculate(part2num, part1num, action).ToString();
+            }
+            catch (DivideByZeroException ex)
+            {
+                resultBox.Text = "Division by 0 not allowed!"; 
+            }
 
             part1 = resultBox.Text; 
         }
