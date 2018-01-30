@@ -18,8 +18,10 @@
         <Button x:Name="num7btn" Content="7" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top" Width="25" Click="num1btn_Click"/>
         <Button x:Name="num8btn" Content="8" HorizontalAlignment="Left" Margin="40,99,0,0" VerticalAlignment="Top" Width="25" Click="num1btn_Click"/>
         <Button x:Name="num9btn" Content="9" HorizontalAlignment="Left" Margin="70,99,0,0" VerticalAlignment="Top" Width="25" Click="num1btn_Click"/>
-        <Button x:Name="plusbtn" Content="+" HorizontalAlignment="Left" Margin="108,45,0,0" VerticalAlignment="Top" Width="32" RenderTransformOrigin="0.919,1.232" Click="plusbtn_Click"/>
-        <Button x:Name="minusBtn" Content="-" HorizontalAlignment="Left" Margin="108,72,0,0" VerticalAlignment="Top" Width="32" RenderTransformOrigin="0.919,1.232" Click="minusBtn_Click"/>
+        <Button x:Name="plusbtn" Content="+" HorizontalAlignment="Left" Margin="108,45,0,0" VerticalAlignment="Top" Width="32" RenderTransformOrigin="0.919,1.232" Click="action_Click"/>
+        <Button x:Name="minusBtn" Content="-" HorizontalAlignment="Left" Margin="108,72,0,0" VerticalAlignment="Top" Width="32" RenderTransformOrigin="0.919,1.232" Click="action_Click"/>
+        <Button x:Name="multiplyBtn" Content="*" HorizontalAlignment="Left" Margin="146,45,0,0" VerticalAlignment="Top" Width="32" RenderTransformOrigin="0.919,1.232" Click="action_Click" />
+        <Button x:Name="divideBtn" Content="/" HorizontalAlignment="Left" Margin="146,72,0,0" VerticalAlignment="Top" Width="32" RenderTransformOrigin="0.919,1.232" Click="action_Click"/>
 
     </Grid>
 </Window>
