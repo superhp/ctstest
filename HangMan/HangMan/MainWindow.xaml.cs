@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,11 @@ namespace HangMan
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void StartBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string[] words = File.ReadAllLines("words.txt"); 
         }
     }
 }
