@@ -26,13 +26,35 @@ namespace HangMan
             InitializeComponent();
         }
 
+        private List<char> guessedLetters = new List<char>(); 
+
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
             string[] words = File.ReadAllLines("words.txt");
 
             Random random = new Random();
             int randomIndex = random.Next(0, words.Length - 1); 
-            string secretWord = words[randomIndex]; 
+            string secretWord = words[randomIndex];
+
+            secretWordLbl.Content = MaskWord(secretWord, guessedLetters); 
         }
+
+        private string MaskWord(string secretWord, List<char> letters)
+        {
+            string maskedWord = "";
+            foreach (char letter in secretWord)
+            {
+                if (letters.Contains(letter)) 
+                {
+                    maskedWord = maskedWord + letter + " ";
+                }
+                else
+                {
+                    maskedWord = maskedWord + "*" + " "; 
+                }
+            }
+            return maskedWord; 
+        }
+
     }
 }
