@@ -2,17 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace HangMan
 {
@@ -26,17 +17,24 @@ namespace HangMan
             InitializeComponent();
         }
 
-        private List<char> guessedLetters = new List<char>(); 
+        private List<char> guessedLetters;
+        private string secretWord;
+        private int triesLeft;
+        private bool gameEnded; 
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
             string[] words = File.ReadAllLines("words.txt");
 
             Random random = new Random();
-            int randomIndex = random.Next(0, words.Length - 1); 
-            string secretWord = words[randomIndex];
+            int randomIndex = random.Next(0, words.Length - 1);
+            secretWord = words[randomIndex];
 
-            secretWordLbl.Content = MaskWord(secretWord, guessedLetters); 
+            triesLeft = 6;
+            guessedLetters = new List<char>(); 
+            gameEnded = false; 
+
+            secretWordLbl.Content = MaskWord(secretWord, guessedLetters);
         }
 
         private string MaskWord(string secretWord, List<char> letters)
@@ -44,17 +42,51 @@ namespace HangMan
             string maskedWord = "";
             foreach (char letter in secretWord)
             {
-                if (letters.Contains(letter)) 
+                if (letters.Contains(letter))
                 {
                     maskedWord = maskedWord + letter + " ";
                 }
                 else
                 {
-                    maskedWord = maskedWord + "*" + " "; 
+                    maskedWord = maskedWord + "*" + " ";
                 }
             }
-            return maskedWord; 
+            return maskedWord;
         }
 
+        private void OnKeyUp(object sender, KeyEventArgs e)
+        {
+            if (gameEnded)
+            {
+                return; 
+            }
+
+            char letter = e.Key.ToString().ToLower()[0];
+            bool correctLetter = secretWord.Contains(letter);
+
+            if (correctLetter && !guessedLetters.Contains(letter))
+            {
+                guessedLetters.Add(letter);
+
+                string maskedWord = MaskWord(secretWord, guessedLetters);
+                secretWordLbl.Content = maskedWord; 
+                if (maskedWord.Replace(" ", "") == secretWord)
+                {
+                    winLooselbl.Content = "You Won!";
+                    gameEnded = true; 
+                }
+            }
+            if(!correctLetter)
+            {
+                triesLeft = triesLeft - 1;
+                tryCountLbl.Content = triesLeft;
+
+                if (triesLeft == 0)
+                {
+                    winLooselbl.Content = "You lost...";
+                    gameEnded = true; 
+                }
+            }
+        }
     }
 }
