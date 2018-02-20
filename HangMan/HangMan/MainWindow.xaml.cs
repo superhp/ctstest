@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace HangMan
 {
@@ -35,6 +37,8 @@ namespace HangMan
             gameEnded = false; 
 
             secretWordLbl.Content = MaskWord(secretWord, guessedLetters);
+
+            ChangeImage(); 
         }
 
         private string MaskWord(string secretWord, List<char> letters)
@@ -56,6 +60,8 @@ namespace HangMan
 
         private void OnKeyUp(object sender, KeyEventArgs e)
         {
+            SystemSounds.Asterisk.Play(); 
+
             if (gameEnded)
             {
                 return; 
@@ -73,7 +79,8 @@ namespace HangMan
                 if (maskedWord.Replace(" ", "") == secretWord)
                 {
                     winLooselbl.Content = "You Won!";
-                    gameEnded = true; 
+                    gameEnded = true;
+                    SystemSounds.Exclamation.Play();
                 }
             }
             if(!correctLetter)
@@ -84,9 +91,18 @@ namespace HangMan
                 if (triesLeft == 0)
                 {
                     winLooselbl.Content = "You lost...";
-                    gameEnded = true; 
+                    gameEnded = true;
+                    SystemSounds.Question.Play(); 
                 }
             }
+
+            ChangeImage(); 
+        }
+
+        private void ChangeImage()
+        {
+            BitmapImage bi = new BitmapImage(new Uri("images/" + triesLeft + ".png", UriKind.Relative));
+            picture.Source = bi; 
         }
     }
 }
