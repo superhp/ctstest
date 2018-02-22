@@ -19,32 +19,32 @@ namespace HangMan
             InitializeComponent();
         }
 
-        private List<char> guessedLetters;
-        private string secretWord;
-        private int triesLeft;
-        private bool gameEnded; 
+        private List<char> _guessedLetters;
+        private string _secretWord;
+        private int _triesLeft;
+        private bool _gameEnded;
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            string[] words = File.ReadAllLines("words.txt");
+            var words = File.ReadAllLines("words.txt");
 
-            Random random = new Random();
-            int randomIndex = random.Next(0, words.Length - 1);
-            secretWord = words[randomIndex];
+            var random = new Random();
+            var randomIndex = random.Next(0, words.Length - 1);
+            _secretWord = words[randomIndex];
 
-            triesLeft = 6;
-            guessedLetters = new List<char>(); 
-            gameEnded = false; 
+            _triesLeft = Properties.Settings.Default.TriesLeft;
+            _guessedLetters = new List<char>();
+            _gameEnded = false;
 
-            secretWordLbl.Content = MaskWord(secretWord, guessedLetters);
+            secretWordLbl.Content = MaskWord(_secretWord, _guessedLetters);
 
-            ChangeImage(); 
+            ChangeImage();
         }
 
         private string MaskWord(string secretWord, List<char> letters)
         {
-            string maskedWord = "";
-            foreach (char letter in secretWord)
+            var maskedWord = "";
+            foreach (var letter in secretWord)
             {
                 if (letters.Contains(letter))
                 {
@@ -60,49 +60,49 @@ namespace HangMan
 
         private void OnKeyUp(object sender, KeyEventArgs e)
         {
-            SystemSounds.Asterisk.Play(); 
+            SystemSounds.Asterisk.Play();
 
-            if (gameEnded)
+            if (_gameEnded)
             {
-                return; 
+                return;
             }
 
-            char letter = e.Key.ToString().ToLower()[0];
-            bool correctLetter = secretWord.Contains(letter);
+            var letter = e.Key.ToString().ToLower()[0];
+            var correctLetter = _secretWord.Contains(letter);
 
-            if (correctLetter && !guessedLetters.Contains(letter))
+            if (correctLetter && !_guessedLetters.Contains(letter))
             {
-                guessedLetters.Add(letter);
+                _guessedLetters.Add(letter);
 
-                string maskedWord = MaskWord(secretWord, guessedLetters);
-                secretWordLbl.Content = maskedWord; 
-                if (maskedWord.Replace(" ", "") == secretWord)
+                var maskedWord = MaskWord(_secretWord, _guessedLetters);
+                secretWordLbl.Content = maskedWord;
+                if (maskedWord.Replace(" ", "") == _secretWord)
                 {
                     winLooselbl.Content = "You Won!";
-                    gameEnded = true;
+                    _gameEnded = true;
                     SystemSounds.Exclamation.Play();
                 }
             }
-            if(!correctLetter)
+            if (!correctLetter)
             {
-                triesLeft = triesLeft - 1;
-                tryCountLbl.Content = triesLeft;
+                _triesLeft = _triesLeft - 1;
+                tryCountLbl.Content = _triesLeft;
 
-                if (triesLeft == 0)
+                if (_triesLeft == 0)
                 {
                     winLooselbl.Content = "You lost...";
-                    gameEnded = true;
-                    SystemSounds.Question.Play(); 
+                    _gameEnded = true;
+                    SystemSounds.Question.Play();
                 }
             }
 
-            ChangeImage(); 
+            ChangeImage();
         }
 
         private void ChangeImage()
         {
-            BitmapImage bi = new BitmapImage(new Uri("images/" + triesLeft + ".png", UriKind.Relative));
-            picture.Source = bi; 
+            var bi = new BitmapImage(new Uri("images/" + _triesLeft + ".png", UriKind.Relative));
+            picture.Source = bi;
         }
     }
 }
