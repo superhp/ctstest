@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Db;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,10 +27,24 @@ namespace HangMan
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            var words = File.ReadAllLines("words.txt");
+            List<string> words; 
+            using (var db = new HangmanContext())
+            {
+                var word = new Word();
+                word.Value = "naujas";
+
+                db.Words.Add(word);
+                db.SaveChanges();
+
+                words = db.Words
+                    .Where(x => x.Value.Length > 5)
+                    .Select(x => x.Value)
+                    .ToList(); 
+            }
+                //var words = File.ReadAllLines("words.txt");
 
             var random = new Random();
-            var randomIndex = random.Next(0, words.Length - 1);
+            var randomIndex = random.Next(0, words.Count - 1);
             _secretWord = words[randomIndex];
 
             _triesLeft = Properties.Settings.Default.TriesLeft;
